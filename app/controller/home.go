@@ -5,11 +5,13 @@ import (
 	"io"
 	"net/http"
 	"os"
-
-	"encoding/json"
+	"strings"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 )
+
+var whitelist = whiteListFromEnv()
 
 func Home(c *gin.Context) {
 	input := Form{}
@@ -18,8 +20,7 @@ func Home(c *gin.Context) {
 		return
 	}
 
-	json.NewEncoder(os.Stdout).Encode(input)
-
+	fmt.Println(whitelist)
 	content := TwiML{
 		Say: "hello world",
 	}
@@ -27,4 +28,21 @@ func Home(c *gin.Context) {
 
 	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>`)
 	xml.NewEncoder(c.Writer).Encode(content)
+}
+
+func whiteListFromEnv() []string {
+	phones := []string{}
+	for _, env := range os.Environ() {
+		parts := strings.Split(env, "=")
+		if len(parts) != 2 {
+			continue
+		}
+
+		if !strings.HasPrefix(parts[0], "PH_") {
+			continue
+		}
+
+		phones = append(phones, parts[1])
+	}
+	return phones
 }
