@@ -10,6 +10,7 @@ import (
 func Routes() http.Handler {
 	router := gin.New()
 	router.GET("/", controller.Home)
+	router.POST("/", controller.Home)
 
 	return router
 }

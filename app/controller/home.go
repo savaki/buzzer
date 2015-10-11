@@ -1,11 +1,15 @@
 package controller
 
 import (
-	"io"
+	"encoding/json"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Home(c *gin.Context) {
-	io.WriteString(c.Writer, "hello world")
+	content := TwiML{
+		Say: "hello world",
+	}
+	c.Header("Content-Type", "text/xml")
+	json.NewEncoder(c.Writer).Encode(content)
 }
