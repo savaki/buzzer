@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"encoding/json"
+	"encoding/xml"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,5 +11,5 @@ func Home(c *gin.Context) {
 		Say: "hello world",
 	}
 	c.Header("Content-Type", "text/xml")
-	json.NewEncoder(c.Writer).Encode(content)
+	xml.NewEncoder(c.Writer).Encode(content)
 }
