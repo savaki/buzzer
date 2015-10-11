@@ -2,20 +2,23 @@ package controller
 
 import (
 	"encoding/xml"
-	"fmt"
 	"io"
+	"net/http"
 	"os"
-	"strings"
+
+	"encoding/json"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Home(c *gin.Context) {
-	for key, values := range c.Request.Header {
-		fmt.Printf("%s: %s\n", key, strings.Join(values, ", "))
+	input := Form{}
+	if err := c.Bind(&input); err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
 	}
-	defer c.Request.Body.Close()
-	io.Copy(os.Stdout, c.Request.Body)
+
+	json.NewEncoder(os.Stdout).Encode(input)
 
 	content := TwiML{
 		Say: "hello world",
