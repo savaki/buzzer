@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/codegangsta/cli"
-	"github.com/gin-gonic/gin"
+	"github.com/savaki/buzzer/app"
 )
 
 type Options struct {
@@ -30,6 +30,6 @@ func main() {
 func Run(c *cli.Context) {
 	opts := Opts(c)
 
-	router := gin.New()
-	http.ListenAndServe(":" + opts.Port, router)
+	router := app.Routes()
+	http.ListenAndServe(":"+opts.Port, router)
 }
