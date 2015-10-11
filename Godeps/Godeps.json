@@ -1,0 +1,36 @@
+{
+	"ImportPath": "github.com/savaki/buzzer",
+	"GoVersion": "go1.5",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/codegangsta/cli",
+			"Comment": "1.2.0-137-gbca61c4",
+			"Rev": "bca61c476e3c752594983e4c9bcd5f62fb09f157"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.0rc1-136-gfd5d429",
+			"Rev": "fd5d4294a5d5223d55fc76d7840f4b0ad91647bb"
+		},
+		{
+			"ImportPath": "github.com/manucorporat/sse",
+			"Rev": "fe6ea2c8e398672518ef204bf0fbd9af858d0e15"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-colorable",
+			"Rev": "40e4aedc8fabf8c23e040057540867186712faa5"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "446d52dd4018303a13b36097e26d0888aca5d6ef"
+		},
+		{
+			"ImportPath": "gopkg.in/bluesuncorp/validator.v5",
+			"Comment": "v5.10.3",
+			"Rev": "77108103e5fd435ff31967e1a011fda801391c85"
+		}
+	]
+}
