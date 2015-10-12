@@ -37,3 +37,10 @@ func Home(c *gin.Context) {
 	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>`)
 	xml.NewEncoder(c.Writer).Encode(content)
 }
+
+func Dial(c *gin.Context) {
+	c.Header("Content-Type", "text/xml")
+
+	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>
+<Dial timeout="10">510-529-9511</Dial>`)
+}

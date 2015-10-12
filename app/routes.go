@@ -12,6 +12,9 @@ func Routes() http.Handler {
 	router.GET("/", controller.Home)
 	router.POST("/", controller.Home)
 
+	router.GET("/dial", controller.Dial)
+	router.POST("/dial", controller.Dial)
+
 	router.GET("/auth", controller.Auth)
 	router.POST("/auth", controller.Auth)
 
