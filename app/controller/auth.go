@@ -57,7 +57,7 @@ func Buzz(c *gin.Context) {
 
 	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>
 <Response>
-	<Play>/static/DTMF-9.ulaw</Play>
-	<Play>/static/DTMF-pound.ulaw</Play>
+	<Play>/static/DTMF-9.mp3</Play>
+	<Play>/static/DTMF-pound.mp3</Play>
 </Response>`)
 }
