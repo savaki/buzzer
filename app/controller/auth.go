@@ -55,9 +55,8 @@ func Auth(c *gin.Context) {
 
 func Buzz(c *gin.Context) {
 	content := TwiML{
-		Say: "enter",
 		Play: &Play{
-			Digits: "#9",
+			Digits: "#w9",
 		},
 	}
 	c.Header("Content-Type", "text/xml")
