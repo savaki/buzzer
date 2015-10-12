@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"encoding/xml"
 	"fmt"
 	"io"
 	"net/http"
@@ -53,10 +54,13 @@ func Auth(c *gin.Context) {
 }
 
 func Buzz(c *gin.Context) {
+	content := TwiML{
+		Play: &Play{
+			Digits: "####w9999",
+		},
+	}
 	c.Header("Content-Type", "text/xml")
 
-	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>
-<Response>
-	<Play digits="#w9"></Play>
-</Response>`)
+	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>`)
+	xml.NewEncoder(c.Writer).Encode(content)
 }
