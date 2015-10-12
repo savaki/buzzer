@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"encoding/xml"
 	"fmt"
 	"io"
 	"net/http"
@@ -54,11 +53,6 @@ func Auth(c *gin.Context) {
 }
 
 func Buzz(c *gin.Context) {
-	content := TwiML{
-		Play: &Play{
-			Digits: "####w9999",
-		},
-	}
 	c.Header("Content-Type", "text/xml")
 
 	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>
@@ -66,5 +60,4 @@ func Buzz(c *gin.Context) {
 	<Play>/static/DTMF-9.mp3</Play>
 	<Play>/static/DTMF-pound.mp3</Play>
 </Response>`)
-	xml.NewEncoder(c.Writer).Encode(content)
 }
