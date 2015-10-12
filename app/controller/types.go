@@ -20,8 +20,9 @@ type Form struct {
 }
 
 type TwiML struct {
-	XMLName  xml.Name `xml:"Response"`
-	Say      string   `xml:",omitempty"`
+	XMLName  xml.Name  `xml:"Response"`
+	Say      string    `xml:",omitempty"`
+	Play     *Play     `xml:",omitempty"`
 	Gather   *Gather   `xml:",omitempty"`
 	Redirect *Redirect `xml:",omitempty"`
 }
@@ -37,4 +38,10 @@ type Redirect struct {
 	XMLName xml.Name `xml:"Redirect"`
 	Method  string   `xml:"method,attr,omitempty"`
 	Action  string   `xml:",innerxml"`
+}
+
+type Play struct {
+	XMLName xml.Name `xml:"Play"`
+	Digits  string   `xml:"digits,attr,omitempty"`
+	Url     string   `xml:",innerxml"`
 }
