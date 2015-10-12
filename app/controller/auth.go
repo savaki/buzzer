@@ -61,6 +61,10 @@ func Buzz(c *gin.Context) {
 	}
 	c.Header("Content-Type", "text/xml")
 
-	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>`)
+	io.WriteString(c.Writer, `<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+	<Play>/static/DTMF-9.mp3</Play>
+	<Play>/static/DTMF-pound.mp3</Play>
+</Response>`)
 	xml.NewEncoder(c.Writer).Encode(content)
 }

@@ -18,5 +18,7 @@ func Routes() http.Handler {
 	router.GET("/buzz", controller.Buzz)
 	router.GET("/goodbye", controller.Goodbye)
 
+	router.Static("/static", "static")
+
 	return router
 }
